@@ -1,30 +1,37 @@
 package com.university.test;
 
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 
 import com.university.entity.Student;
 import com.university.util.HibernateUtil;
 
-public class GetStudent {
+public class DeleteStudent {
 
     public static void main(String[] args) {
 
-        // Open Session
         Session session = HibernateUtil
                 .getSessionFactory()
                 .openSession();
 
-        // Retrieve Student with ID = 1
+        Transaction transaction = session.beginTransaction();
+
         Student student = session.get(Student.class, 1);
 
-        // Check if found
         if (student != null) {
-            System.out.println(student);
+
+            session.remove(student);
+
+            transaction.commit();
+
+            System.out.println("Student deleted successfully.");
+
         } else {
+
             System.out.println("Student not found.");
+
         }
 
-        // Close Session
         session.close();
     }
 }

@@ -21,7 +21,7 @@
         </property>
 
         <property name="hibernate.connection.password">
-            your_password
+            ABCD@123
         </property>
 
         <property name="hibernate.dialect">
@@ -33,6 +33,8 @@
         <property name="hibernate.hbm2ddl.auto">update</property>
 
         <mapping class="com.university.entity.Student"/>
+        <mapping class="com.university.entity.Department"/>
+        <mapping class="com.university.entity.StudentProfile"/>
 
     </session-factory>
 
